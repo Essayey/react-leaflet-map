@@ -23,16 +23,16 @@ function App() {
     const [nodeEditing, setNodeEditing] = useState(false);
 
     const [nodes, setNodes] = useState([
-        { id: 0, lat: 54.515427399355154, lng: 36.24768254508607, property1: null, property2: null, property3: null, linkedWith: [0, 1] },
-        { id: 1, lat: 54.51507844132908, lng: 36.25071749461759, property1: null, property2: null, property3: null, linkedWith: [1, 0] },
-        { id: 2, lat: 54.5137573589381, lng: 36.24701764448197, property1: null, property2: null, property3: null, linkedWith: [2] },
-        { id: 3, lat: 54.51338345993791, lng: 36.24993462777728, property1: null, property2: null, property3: null, linkedWith: [3] },
-        { id: 4, lat: 54.51480425793142, lng: 36.25236902192451, property1: null, property2: null, property3: null, linkedWith: [4] },
-        { id: 5, lat: 54.51317158231861, lng: 36.25183281175992, property1: null, property2: null, property3: null, linkedWith: [5] },
-        { id: 6, lat: 54.51581374226371, lng: 36.2539025829952, property1: null, property2: null, property3: null, linkedWith: [6] },
-        { id: 7, lat: 54.5151282926582, lng: 36.252937404698955, property1: null, property2: null, property3: null, linkedWith: [7] },
-        { id: 8, lat: 54.515103367001224, lng: 36.253634477912904, property1: null, property2: null, property3: null, linkedWith: [8] },
-        { id: 9, lat: 54.51476063767573, lng: 36.25354868428658, property1: null, property2: null, property3: null, linkedWith: [9] }
+        { id: 0, lat: 54.515427399355154, lng: 36.24768254508607, property1: '', property2: '', property3: '', linkedWith: [0, 1] },
+        { id: 1, lat: 54.51507844132908, lng: 36.25071749461759, property1: '', property2: '', property3: '', linkedWith: [1, 0] },
+        { id: 2, lat: 54.5137573589381, lng: 36.24701764448197, property1: '', property2: '', property3: '', linkedWith: [2] },
+        { id: 3, lat: 54.51338345993791, lng: 36.24993462777728, property1: '', property2: '', property3: '', linkedWith: [3] },
+        { id: 4, lat: 54.51480425793142, lng: 36.25236902192451, property1: '', property2: '', property3: '', linkedWith: [4] },
+        { id: 5, lat: 54.51317158231861, lng: 36.25183281175992, property1: '', property2: '', property3: '', linkedWith: [5] },
+        { id: 6, lat: 54.51581374226371, lng: 36.2539025829952, property1: '', property2: '', property3: '', linkedWith: [6] },
+        { id: 7, lat: 54.5151282926582, lng: 36.252937404698955, property1: '', property2: '', property3: '', linkedWith: [7] },
+        { id: 8, lat: 54.515103367001224, lng: 36.253634477912904, property1: '', property2: '', property3: '', linkedWith: [8] },
+        { id: 9, lat: 54.51476063767573, lng: 36.25354868428658, property1: '', property2: '', property3: '', linkedWith: [9] }
     ])
     const [currentNode, setCurrentNode] = useState(null);
 
@@ -48,14 +48,7 @@ function App() {
     }
 
     const editNode = node => {
-        setNodes(nodes.map(n => {
-            if (n.id === node.id) {
-                return node;
-            }
-            return n;
-        }))
-        console.log('qweqweqwe')
-        console.log(nodes.map(n => {
+        setNodes(nodes => nodes.map(n => {
             if (n.id === node.id) {
                 return node;
             }

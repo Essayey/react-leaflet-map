@@ -18,12 +18,6 @@ const EditNodeModal = ({ onHide, currentNode, nodes, editNode, deleteNode, addSe
     const handleAddSegment = () => {
         if (!segmentNodeId) return;
 
-
-        // console.log({
-        //     ...currentNode,
-        //     linkedWith: [...currentNode.linkedWith, segmentNodeId]
-        // })
-
         editNode({
             ...currentNode,
             linkedWith: [...currentNode.linkedWith, segmentNodeId]
@@ -31,9 +25,8 @@ const EditNodeModal = ({ onHide, currentNode, nodes, editNode, deleteNode, addSe
 
         editNode({
             ...nodes.find(node => node.id === segmentNodeId),
-            linkedWith: [nodes.find(node => node.id === segmentNodeId).linkedWith, segmentNodeId]
-        }
-        )
+            linkedWith: [...nodes.find(node => node.id === segmentNodeId).linkedWith, currentNode.id]
+        })
 
         addSegment({
             beginNode: currentNode.id,
@@ -127,6 +120,7 @@ const EditNodeModal = ({ onHide, currentNode, nodes, editNode, deleteNode, addSe
                                     {nodes.map(node => {
                                         if (currentNode.linkedWith.find(id => id === node.id) !== undefined) return null;
                                         return <Dropdown.Item
+                                            key={node.id}
                                             onClick={() => setSegmentNodeId(node.id)}
                                             active={node.id === segmentNodeId}
                                         >
