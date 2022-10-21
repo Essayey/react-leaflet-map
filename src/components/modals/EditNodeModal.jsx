@@ -15,6 +15,11 @@ const EditNodeModal = ({ onHide, currentNode, nodes, editNode, deleteNode, addSe
         onHide();
     }
 
+    const handleDelete = () => {
+        deleteNode(currentNode.id);
+        onHide();
+    }
+
     const handleAddSegment = () => {
         if (!segmentNodeId) return;
 
@@ -139,7 +144,7 @@ const EditNodeModal = ({ onHide, currentNode, nodes, editNode, deleteNode, addSe
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={onHide}>
+                    <Button variant="danger" onClick={handleDelete}>
                         Удалить узел
                     </Button>
                     <Button variant="primary" type='sumbit' onClick={handleEdit}>
