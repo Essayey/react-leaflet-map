@@ -48,17 +48,18 @@ function App() {
     }
 
     const editNode = node => {
-        setNodes(nodes => nodes.map(n => {
-            if (n.id === node.id) {
-                return node;
-            }
-            return n;
-        }))
+        setNodes(nodes => [...nodes.filter(n => n.id !== node.id), node])
     }
+
+    const deleteNode = id => {
+        setNodes(nodes.filter(node => node.id !== id));
+    }
+
 
     const addSegment = segment => {
         setSegments([...segments, { id: segments.length, ...segment }]);
     }
+
 
     return (
         <div className='App'>
@@ -99,6 +100,7 @@ function App() {
                     currentNode={currentNode}
                     nodes={nodes}
                     editNode={editNode}
+                    deleteNode={deleteNode}
                     addSegment={addSegment}
                 />
             }
